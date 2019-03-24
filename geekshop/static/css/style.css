@@ -34,7 +34,7 @@ body{
 }
 .list-characteristics{
     color: darkslategray;
-    list-style-image: url("img/Check.png")
+    list-style-image: url("/static/img/Check.png")
 }
 .input-form{
     width: 300px;
@@ -110,7 +110,7 @@ body{
     border-bottom: 1px solid #e6a100;
     display: flex;
     justify-content: space-between;
-    background-image: url("img/header-background.png");
+    background-image: url("/static/img/header-background.png");
     background-color: #f0e4c8;
 }
 .main-menu{
