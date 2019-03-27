@@ -18,15 +18,16 @@
 <body>
     <div class="container">
         {% block menu %}
+        {% include 'mainapp/includes/inc_menu.html' %}
         {% endblock %}
         {% block content %}
         {% endblock %}
-    </div>
-    {% block footer %}
+
+        {% block footer %}
         <div class="footer">
             <footer class="footer-copyright">&copy; Все права защищены</footer>
         </div>
-    {% endblock %}
-
+        {% endblock %}
+    </div>
 </body>
 </html>
