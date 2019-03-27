@@ -1,25 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Контакты</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <a href="index.html"><img src="/static/img/logotip.png" alt="logo" class="logotip"></a>
-            <ul class="main-menu">
-                <li class="menu-list"><a class="menu-link" href="/">Главная</a></li>
-                <li class="menu-list"><a class="menu-link" href="/products/">Каталог</a></li>
-                <li class="menu-list"><a class="menu-link" href="/contact/">Контакты</a></li>
-            </ul>
-        </div>
-        <div class="content">
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Процессор Intel Core i5-8600K OEM
+{% endblock %}
+
+{% block content %}
             <h1>Процессор Intel Core i5-8600K OEM</h1>
             <h2 class="head-description">Описание товара</h2>
             <div class="product-description">
-                <a href="/static/img/0513732_2.jpg" target="_blank"><img class="image-description" src="/static/img/0513732_2.jpg"></a>
+                <a href="{%  static 'img/0513732_2.jpg' %}" target="_blank"><img class="image-description" src="{%  static 'img/0513732_2.jpg' %}"></a>
                 <p class="short-description description-paragraph">Socket 1151 v2, 6-ядерный, 3200 МГц, Turbo: 4600 МГц, Coffee Lake-S, Кэш L2 - 1.5 Мб, Кэш L3 - 12 Мб, Intel UHD Graphics 630, 14 нм, 65 Вт</p>
             </div>
             <h2 class="head-description">Цена</h2>
@@ -109,10 +99,4 @@
             <p class="full-description description-paragraph">Множитель в данной модели разблокирован, что дает хороший простор для разгона. Если же вы не слишком хорошо разбираетесь в подобных вещах, то можете немного повысить производительность путем активации Turbo-режима.</p>                
             <p class="full-description description-paragraph">Процессор поддерживает широкий спектр фирменных технологий вроде Enhanced Intel Speedstep Technology и Enhanced Virus Protection.</p>                
             <p class="full-description description-paragraph">Приятным бонусом служит и встроенное графическое ядро, возможностей которого вполне хватит для выполнения базовых задач и запуска несложных с графической точки зрения игр.</p>
-        </div>
-        <div class="footer">
-            <footer class="footer-copyright">&copy; Все права защищены</footer>
-        </div>
-    </div>
-</body>
-</html>
+{%  endblock %}

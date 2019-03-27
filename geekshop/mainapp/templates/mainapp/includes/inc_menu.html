@@ -2,8 +2,10 @@
 <div class="header">
     <a href="{% url 'main' %}"><img src="{% static 'img/logotip.png' %}" alt="logo" class="logotip"></a>
     <ul class="main-menu">
-        <li class="menu-list"><a class="menu-link" href="{% url 'main' %}">Главная</a></li>
-        <li class="menu-list"><a class="menu-link" href="{% url 'products' %}">Каталог</a></li>
-        <li class="menu-list"><a class="menu-link" href="{% url 'contact' %}">Контакты</a></li>
+        {% for link in links_menu %}
+            <li class="menu-list"><a
+                    class="menu-link {% if request.resolver_match.url_name == link.href %}menu-link-active {% endif %}"
+                                     href="{% url link.href %}">{{ link.name }}</a></li>
+        {% endfor %}
     </ul>
 </div>
