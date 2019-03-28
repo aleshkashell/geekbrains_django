@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-content = { 'links_menu': [
+content = {'links_menu': [
         {'href': 'main', 'name': 'Главная'},
         {'href': 'products', 'name': 'Продукты'},
         {'href': 'contact', 'name': 'Контакты'}
