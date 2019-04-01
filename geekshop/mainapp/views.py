@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import ProductCategory, Product
+from .models import ProductCategory
 
 
 content = {'links_menu': [
