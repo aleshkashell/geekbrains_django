@@ -16,6 +16,8 @@ Including another URLconf
 from django.urls import path, re_path
 from django.contrib import admin
 import mainapp.views as mainapp
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     re_path('^$', mainapp.main, name='main'),
@@ -23,3 +25,6 @@ urlpatterns = [
     re_path('^contact/', mainapp.contact, name='contact'),
     re_path('^admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
