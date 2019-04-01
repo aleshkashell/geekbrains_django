@@ -4,7 +4,7 @@
     <ul class="main-menu">
         {% for link in links_menu %}
             <li class="menu-list"><a
-                    class="menu-link {% if request.resolver_match.url_name == link.href %}menu-link-active {% endif %}"
+                    class="menu-link {% if request.resolver_match.view_name == link.href %}menu-link-active {% endif %}"
                                      href="{% url link.href %}">{{ link.name }}</a></li>
         {% endfor %}
     </ul>
