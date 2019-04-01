@@ -4,7 +4,8 @@
         "pk": 1,
         "fields": {
             "name": "Процессоры",
-            "description": ""
+            "description": "",
+            "image": "0513732_2.jpg"
         }
     },
     {
@@ -12,7 +13,8 @@
         "pk": 2,
         "fields": {
             "name": "Материнские платы",
-            "description": ""
+            "description": "",
+            "image": "asus-rog-strix-b250g-gaming.jpg"
         }
     },
     {
@@ -20,7 +22,8 @@
         "pk": 3,
         "fields": {
             "name": "Серверные платформы",
-            "description": ""
+            "description": "",
+            "image": "0535934_1.jpg"
         }
     },
     {
