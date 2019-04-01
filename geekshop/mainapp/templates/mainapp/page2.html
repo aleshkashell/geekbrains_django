@@ -1,103 +1,87 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Контакты</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <a href="index.html"><img src="/static/img/logotip.png" alt="logo" class="logotip"></a>
-            <ul class="main-menu">
-                <li class="menu-list"><a class="menu-link" href="/">Главная</a></li>
-                <li class="menu-list"><a class="menu-link" href="/products/">Каталог</a></li>
-                <li class="menu-list"><a class="menu-link" href="/contact/">Контакты</a></li>
-            </ul>
-        </div>
-        <div class="content">
-            <h1>Сервер Dell PowerEdge T30</h1>
-            <h2 class="head-description">Описание товара</h2>
-            <div class="product-description">
-                <a href="/static/img/0535934_1.jpg" target="_blank"><img class="image-description" src="/static/img/0535934_1.jpg"></a>
-                <p class="short-description description-paragraph">Сервер Dell PowerEdge T30 E3-1225v5, 8GB DDR4, 2x250GB SSD SATA +1TB SATA 7.2k HDD, Intel RSC, DVDRW, 1GbE, AMT11, Tower, 1Y NBD</p>
-            </div>
-            <h2 class="head-description">Цена</h2>
-            <div class="price">
-                <p class="description-paragraph price-count"><b>58 890 руб</b></p>
-                <button type="button" class="button_buy">Купить</button>
-            </div>
-            <h2 class="head-description">Характеристики товара</h2>
-            <table class="description-table">
-                <tbody>
-                    <tr>
-                        <td>Тип оборудования</span></td>
-                        <td>Сервер</span></td>
-                    </tr>
-                    <tr>
-                        <td>Процессор</span></td>
-                        <td>Intel Xeon E3-1225v5 (SkyLake, 3.3 ГГц, 8Мб, S1151)</span></td>
-                    </tr>
-                    <tr>
-                        <td>Чипсет</span></td>
-                        <td>Intel C236</span></td>
-                    </tr>
-                    <tr>
-                        <td>Оперативная память</span></td>
-                        <td>8 ГБ DDR4 2133МГц ECC</span></td>
-                    </tr>
-                    <tr>
-                        <td>Жесткий диск</span></td>
-                        <td>2 x 250Гб SSD SATA III</span></td>
-                    </tr>
-                    <tr>
-                        <td>Видеокарта</span></td>
-                        <td>Matrox G200eW (16 Мб)</span></td>
-                    </tr>
-                    <tr>
-                        <td>Оптические накопители</span></td>
-                        <td>DVD±RW Super Multi</span></td>
-                    </tr>
-                    <tr>
-                        <td>Тип корпуса</span></td>
-                        <td>Mini Tower</span></td>
-                    </tr>
-                    <tr>
-                        <td>Сетевая карта</span></td>
-                        <td>1 x 10/100/1000 Мбит/с</span></td>
-                    </tr>
-                    <tr>
-                        <td>Операционная система</span></td>
-                        <td>Не установлена</span></td>
-                    </tr>
-                    <tr>
-                        <td>Тип упаковки</span></td>
-                        <td>Retail</span></td>
-                    </tr>
-                    <tr>
-                        <td>Комплект поставки</span></td>
-                        <td>Сервер</span></td>
-                    </tr>
-                    <tr>
-                        <td>Размеры упаковки</span></td>
-                        <td>270 x 560 x 470 мм</span></td>
-                    </tr>
-                    <tr>
-                        <td>Вес в упаковке</span></td>
-                        <td>12 кг</span></td>
-                    </tr>
-                    <tr>
-                        <td>Сайт производителя</span></td>
-                        <td>www.dell.com</span></td>
-                    </tr>
-                <tbody>
-            </table>
-            <h2 class="head-description">Подробное описание товара</h2>
-            <p class="full-description description-paragraph">Dell PowerEdge T30 E3-1225v5 (3.3GHz) 4C, 8GB (1x8GB) 2133MHz DDR4 UDIMM, (2)x 250GB SSD SATA 3D-NAND TLC 2.5" Drive + 1TB SATA 7200 rpm Cabled 3.5" HDD (up to 4x3.5"), Onboard SATA RAID (Intel Rapid Storage Controller 12.X), DVD+/-RW, Intel i219 Single Port 1GbE, AMT 11.0, PS 290W (fixed), Tower, 1Y NBD</p>
-        </div>
-        <div class="footer">
-            <footer class="footer-copyright">&copy; Все права защищены</footer>
-        </div>
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    Сервер Dell PowerEdge T30
+{% endblock %}
+
+{% block content %}
+    <h1>Сервер Dell PowerEdge T30</h1>
+    <h2 class="head-description">Описание товара</h2>
+    <div class="product-description">
+        <a href="{%  static 'img/0535934_1.jpg' %}" target="_blank"><img class="image-description" src="{%  static 'img/0535934_1.jpg' %}"></a>
+        <p class="short-description description-paragraph">Сервер Dell PowerEdge T30 E3-1225v5, 8GB DDR4, 2x250GB SSD SATA +1TB SATA 7.2k HDD, Intel RSC, DVDRW, 1GbE, AMT11, Tower, 1Y NBD</p>
     </div>
-</body>
-</html>
+    <h2 class="head-description">Цена</h2>
+    <div class="price">
+        <p class="description-paragraph price-count"><b>58 890 руб</b></p>
+        <button type="button" class="button_buy">Купить</button>
+    </div>
+    <h2 class="head-description">Характеристики товара</h2>
+    <table class="description-table">
+        <tbody>
+            <tr>
+                <td>Тип оборудования</span></td>
+                <td>Сервер</span></td>
+            </tr>
+            <tr>
+                <td>Процессор</span></td>
+                <td>Intel Xeon E3-1225v5 (SkyLake, 3.3 ГГц, 8Мб, S1151)</span></td>
+            </tr>
+            <tr>
+                <td>Чипсет</span></td>
+                <td>Intel C236</span></td>
+            </tr>
+            <tr>
+                <td>Оперативная память</span></td>
+                <td>8 ГБ DDR4 2133МГц ECC</span></td>
+            </tr>
+            <tr>
+                <td>Жесткий диск</span></td>
+                <td>2 x 250Гб SSD SATA III</span></td>
+            </tr>
+            <tr>
+                <td>Видеокарта</span></td>
+                <td>Matrox G200eW (16 Мб)</span></td>
+            </tr>
+            <tr>
+                <td>Оптические накопители</span></td>
+                <td>DVD±RW Super Multi</span></td>
+            </tr>
+            <tr>
+                <td>Тип корпуса</span></td>
+                <td>Mini Tower</span></td>
+            </tr>
+            <tr>
+                <td>Сетевая карта</span></td>
+                <td>1 x 10/100/1000 Мбит/с</span></td>
+            </tr>
+            <tr>
+                <td>Операционная система</span></td>
+                <td>Не установлена</span></td>
+            </tr>
+            <tr>
+                <td>Тип упаковки</span></td>
+                <td>Retail</span></td>
+            </tr>
+            <tr>
+                <td>Комплект поставки</span></td>
+                <td>Сервер</span></td>
+            </tr>
+            <tr>
+                <td>Размеры упаковки</span></td>
+                <td>270 x 560 x 470 мм</span></td>
+            </tr>
+            <tr>
+                <td>Вес в упаковке</span></td>
+                <td>12 кг</span></td>
+            </tr>
+            <tr>
+                <td>Сайт производителя</span></td>
+                <td>www.dell.com</span></td>
+            </tr>
+        <tbody>
+    </table>
+    <h2 class="head-description">Подробное описание товара</h2>
+    <p class="full-description description-paragraph">Dell PowerEdge T30 E3-1225v5 (3.3GHz) 4C, 8GB (1x8GB) 2133MHz DDR4 UDIMM, (2)x 250GB SSD SATA 3D-NAND TLC 2.5" Drive + 1TB SATA 7200 rpm Cabled 3.5" HDD (up to 4x3.5"), Onboard SATA RAID (Intel Rapid Storage Controller 12.X), DVD+/-RW, Intel i219 Single Port 1GbE, AMT 11.0, PS 290W (fixed), Tower, 1Y NBD</p>
+{% endblock %}
