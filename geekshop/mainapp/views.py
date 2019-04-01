@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import ProductCategory, Product
+
 
 content = {'links_menu': [
         {'href': 'main', 'name': 'Главная'},
@@ -12,7 +14,8 @@ def main(request):
 
 
 def products(request, pk=None):
-    print(pk)
+    content['title'] = 'Категории'
+    content['categories'] = ProductCategory.objects.all()[:4]
     return render(request, 'mainapp/catalog.html', content)
 
 
