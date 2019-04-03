@@ -1,0 +1,55 @@
+[
+    {
+        "model": "mainapp.productcategory",
+        "pk": 1,
+        "fields": {
+            "name": "Процессоры",
+            "description": "",
+            "image": "0513732_2.jpg"
+        }
+    },
+    {
+        "model": "mainapp.productcategory",
+        "pk": 2,
+        "fields": {
+            "name": "Материнские платы",
+            "description": "",
+            "image": "asus-rog-strix-b250g-gaming.jpg"
+        }
+    },
+    {
+        "model": "mainapp.productcategory",
+        "pk": 3,
+        "fields": {
+            "name": "Серверные платформы",
+            "description": "",
+            "image": "0535934_1.jpg"
+        }
+    },
+    {
+        "model": "mainapp.product",
+        "pk": 1,
+        "fields": {
+            "category": 1,
+            "name": "Процессор Intel Core i5-8600K OEM",
+            "image": "0513732_2.jpg",
+            "short_desc": "Intel Core i5-8600K - шустрый шестиядерный процессор, который послужит отличной основой при создании мощной мультимедийной станции.",
+            "description": "Intel Core i5-8600K - шустрый шестиядерный процессор, который послужит отличной основой при создании мощной мультимедийной станции.",
+            "price": "22000.00",
+            "quantity": 198
+        }
+    },
+    {
+        "model": "mainapp.product",
+        "pk": 2,
+        "fields": {
+            "category":3,
+            "name": "Сервер Dell PowerEdge T30",
+            "image": "0535934_1.jpg",
+            "short_desc": "Сервер Dell PowerEdge T30 E3-1225v5, 8GB DDR4, 2x250GB SSD SATA +1TB SATA 7.2k HDD, Intel RSC, DVDRW, 1GbE, AMT11, Tower, 1Y NBD",
+            "description": "PowerEdge T30 E3-1225v5 (3.3GHz) 4C, 8GB (1x8GB) 2133MHz DDR4 UDIMM, (2)x 250GB SSD SATA 3D-NAND TLC 2.5\" Drive + 1TB SATA 7200 rpm Cabled 3.5\" HDD (up to 4x3.5\"), Onboard SATA RAID (Intel Rapid Storage Controller 12.X), DVD+/-RW, Intel i219 Single Port 1GbE, AMT 11.0, PS 290W (fixed), Tower, 1Y NBD",
+            "price": "58890.00",
+            "quantity": 11
+        }
+    }
+]
