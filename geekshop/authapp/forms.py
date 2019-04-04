@@ -2,7 +2,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import UserChangeForm
 from django import forms
-
+import re
 from .models import ShopUser
 
 
@@ -34,6 +34,13 @@ class ShopUserRegisterForm(UserCreationForm):
             raise forms.ValidationError("Вы слишком молоды")
         return data
 
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        match = re.match(r'^[a-zA-Z0-9]+[a-zA-Z0-9._-]*@[a-zA-Z0-9]+([a-zA-Z0-9._-]+\.)[a-zA-Z0-9]+$', data)
+        if not match:
+            raise forms.ValidationError("Некорректный email адрес")
+        return data
+
 
 class ShopUserEditForm(UserChangeForm):
     class Meta:
@@ -52,5 +59,11 @@ class ShopUserEditForm(UserChangeForm):
         data = self.cleaned_data['age']
         if data < 18:
             raise forms.ValidationError("Вы слишком молоды!")
+        return data
 
+    def clean_email(self):
+        data = self.cleaned_data['email']
+        match = re.match(r'^[a-zA-Z0-9]+[a-zA-Z0-9._-]*@[a-zA-Z0-9]+([a-zA-Z0-9._-]+\.)[a-zA-Z0-9]+$', data)
+        if not match:
+            raise forms.ValidationError("Некорректный email адрес")
         return data
