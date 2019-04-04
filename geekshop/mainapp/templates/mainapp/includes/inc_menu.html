@@ -19,6 +19,8 @@
             <a href="{% url 'auth:logout' %}" class="menu-link">выйти</a>
             {% else %}
             <a href="{% url 'auth:login' %}" class="menu-link">войти</a>
+            или
+            <a href="{% url 'auth:register' %}" class="menu-link">Зарегистрироваться</a>
             {% endif %}
         </li>
     </ul>
