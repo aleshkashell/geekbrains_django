@@ -7,5 +7,21 @@
                     class="menu-link {% if request.resolver_match.view_name == link.href %}menu-link-active {% endif %}"
                                      href="{% url link.href %}">{{ link.name }}</a></li>
         {% endfor %}
+        {% if user.is_authenticated %}
+        <li class="menu-list">
+            <a href="{% url 'auth:edit' %}" class="menu-link">
+                {{ user.first_name|default:'Пользователь' }}          
+            </a>
+        </li>
+        {% endif %}  
+        <li class="menu-list">
+            {% if user.is_authenticated %}
+            <a href="{% url 'auth:logout' %}" class="menu-link">выйти</a>
+            {% else %}
+            <a href="{% url 'auth:login' %}" class="menu-link">войти</a>
+            или
+            <a href="{% url 'auth:register' %}" class="menu-link">Зарегистрироваться</a>
+            {% endif %}
+        </li>
     </ul>
 </div>

@@ -3,12 +3,13 @@ body{
 }
 .menu-list{
     list-style-type: none;
-    width: 100px;
+    min-width: 100px;
 }
 .menu-link{
     color: darkcyan;
     font-size: medium;
     font-family: 'Courier New', Courier, monospace;
+    margin-right: 10px;
 }
 .menu-link-active{
     color: black;
