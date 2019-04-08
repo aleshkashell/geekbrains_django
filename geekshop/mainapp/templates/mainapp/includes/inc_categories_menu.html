@@ -7,13 +7,13 @@
       все
     </a>
   </li>
-  {% for link in links_menu %}
+  {% for category in categories %}
     <li>
-      <a href="{% url 'products:category' link.pk %}" 
-         class="{% if request.resolver_match.kwargs.pk|add:'0' == link.pk %}
+      <a href="{% url 'products:category' category.pk %}" 
+         class="{% if request.resolver_match.kwargs.pk|add:'0' == category.pk %}
                   active
                 {% endif %}">
-        {{ link.name }}
+        {{ category.name }}
       </a>
     </li>
   {% endfor %}

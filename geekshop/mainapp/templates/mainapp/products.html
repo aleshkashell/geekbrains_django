@@ -1,0 +1,19 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ category.name }}</h1>
+{% include 'mainapp/includes/inc_categories_menu.html' %}
+<div class="catalog">
+    {% for product in products %}
+        <div class="block">
+            <a href="{% url 'products:category' product.id %}"><img src="/media/{{ product.image }}" alt="{{ product.name }}" width="100"></a>
+            <a href="{% url 'products:category' product.id %}" class="caption">подробнее</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -36,7 +36,7 @@ def products(request, pk=None):
             'products': products,
             'categories': categories
         }
-        return render(request, 'mainapp/catalog.html', content)
+        return render(request, 'mainapp/products.html', content)
     same_products = Product.objects.all()[3:5]
     content = {
         'title': title, 
