@@ -1,0 +1,18 @@
+{% extends 'basketapp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<div class="catalog">
+    {% for category in categories %}
+        <div class="block">
+            <a href="{% url 'products:category' category.id %}"><img src="/media/{{ category.image }}" alt="{{ category.name }}" width="100"></a>
+            <a href="{% url 'products:category' category.id %}" class="caption">подробнее</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

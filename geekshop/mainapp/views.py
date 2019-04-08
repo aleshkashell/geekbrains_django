@@ -22,6 +22,10 @@ def main(request):
 def products(request, pk=None):
     title = 'Категории'
     categories = ProductCategory.objects.all()
+    basket = []
+    if request.user.is_authenticated:
+        basket = request.user.basket.all()
+
     if pk is not None:
         if pk == 0:
             products = Product.objects.all().order_by('price')
@@ -34,7 +38,8 @@ def products(request, pk=None):
             'links_menu': main_links_menu,
             'category': category,
             'products': products,
-            'categories': categories
+            'categories': categories,
+            'basket': basket
         }
         return render(request, 'mainapp/products.html', content)
     same_products = Product.objects.all()[3:5]
