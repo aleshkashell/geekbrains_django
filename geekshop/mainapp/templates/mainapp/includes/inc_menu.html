@@ -24,7 +24,7 @@
             {% endif %}
             {% if basket %}
             <a href="{% url 'basket:view' %}" class="menu-link">
-                Позиций в корзине: {{ basket|length }} 
+                Итого: {{ total }} руб.
             </a>
             {% endif %}
         </li>

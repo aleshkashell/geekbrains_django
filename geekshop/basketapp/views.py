@@ -9,9 +9,18 @@ main_links_menu = [
         {'href': 'contact', 'name': 'Контакты'}
     ]
 
+def get_basket_sum(request):
+    basket = request.user.basket.all()
+    total = 0
+    for product in basket:
+        position = get_object_or_404(Product, pk=product.pk)
+        total = total + position.price * product.quantity
+    return total
+
 def basket(request):
     basket = Basket.objects.filter(user=request.user)
     products = []
+    total = get_basket_sum(request)
     for product in basket:
         position = get_object_or_404(Product, pk=product.pk)
         products.append({
@@ -21,14 +30,13 @@ def basket(request):
     content = {
         'basket': products,
         'links_menu': main_links_menu,
-
+        'total': total
     }
     return render(request, 'basketapp/basket.html', content)
 
 
 def basket_add(request, pk):
     product = get_object_or_404(Product, pk=pk)
-
     basket = Basket.objects.filter(user=request.user, product=product).first()
 
     if not basket:

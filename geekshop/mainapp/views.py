@@ -9,16 +9,26 @@ main_links_menu = [
         {'href': 'contact', 'name': 'Контакты'}
     ]
 
+def get_basket_sum(request):
+    basket = request.user.basket.all()
+    total = 0
+    for product in basket:
+        position = get_object_or_404(Product, pk=product.pk)
+        total = total + position.price * product.quantity
+    return total
+        
 
 def main(request):
     title = 'Главная'
     basket = []
     if request.user.is_authenticated:
         basket = request.user.basket.all()
+    total = get_basket_sum(request)
     content = {
             'title': title,
             'links_menu': main_links_menu,
-            'basket': basket
+            'basket': basket,
+            'total': total
         }
     return render(request, 'mainapp/index.html', content)
 
@@ -27,6 +37,7 @@ def products(request, pk=None):
     title = 'Категории'
     categories = ProductCategory.objects.all()
     basket = []
+    total = get_basket_sum(request)
     if request.user.is_authenticated:
         basket = request.user.basket.all()
 
@@ -43,7 +54,8 @@ def products(request, pk=None):
             'category': category,
             'products': products,
             'categories': categories,
-            'basket': basket
+            'basket': basket,
+            'total': total
         }
         return render(request, 'mainapp/products.html', content)
     same_products = Product.objects.all()[3:5]
@@ -52,7 +64,8 @@ def products(request, pk=None):
         'links_menu': main_links_menu, 
         'same_products': same_products,
         'categories': categories,
-        'basket': basket
+        'basket': basket,
+        'total': total
     }
     print(categories)
     return render(request, 'mainapp/catalog.html', content)
@@ -63,9 +76,11 @@ def contact(request):
     basket = []
     if request.user.is_authenticated:
         basket = request.user.basket.all()
+    total = get_basket_sum(request)
     content = {
             'title': title,
             'links_menu': main_links_menu,
-            'basket': basket
+            'basket': basket,
+            'total': total
         }
     return render(request, 'mainapp/contacts.html', content)
