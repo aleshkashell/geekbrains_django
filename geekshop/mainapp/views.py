@@ -12,9 +12,13 @@ main_links_menu = [
 
 def main(request):
     title = 'Главная'
+    basket = []
+    if request.user.is_authenticated:
+        basket = request.user.basket.all()
     content = {
             'title': title,
-            'links_menu': main_links_menu
+            'links_menu': main_links_menu,
+            'basket': basket
         }
     return render(request, 'mainapp/index.html', content)
 
@@ -47,7 +51,8 @@ def products(request, pk=None):
         'title': title, 
         'links_menu': main_links_menu, 
         'same_products': same_products,
-        'categories': categories
+        'categories': categories,
+        'basket': basket
     }
     print(categories)
     return render(request, 'mainapp/catalog.html', content)
@@ -55,8 +60,12 @@ def products(request, pk=None):
 
 def contact(request):
     title = 'Контакты'
+    basket = []
+    if request.user.is_authenticated:
+        basket = request.user.basket.all()
     content = {
             'title': title,
-            'links_menu': main_links_menu
+            'links_menu': main_links_menu,
+            'basket': basket
         }
     return render(request, 'mainapp/contacts.html', content)
