@@ -10,7 +10,9 @@ main_links_menu = [
     ]
 
 def get_basket_sum(request):
-    basket = request.user.basket.all()
+    basket = []
+    if request.user.is_authenticated:
+        basket = request.user.basket.all()
     total = 0
     for product in basket:
         position = get_object_or_404(Product, pk=product.pk)
