@@ -8,11 +8,9 @@
 {% block content %}
 <h1>{{ title }}</h1>
 <div class="catalog">
-    {% for category in categories %}
-        <div class="block">
-            <a href="{% url 'products:category' category.id %}"><img src="/media/{{ category.image }}" alt="{{ category.name }}" width="100"></a>
-            <a href="{% url 'products:category' category.id %}" class="caption">подробнее</a>
-        </div>
+    {% for product in basket %}
+        {{ product.basket.product }} {{ product.basket.quantity }} X {{ product.product.price }} = {% widthratio product.basket.quantity 1 product.product.price %} руб.
+        </br>
     {% endfor %}
 </div>
 {% endblock %}

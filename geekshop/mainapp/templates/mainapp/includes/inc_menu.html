@@ -22,12 +22,11 @@
             или
             <a href="{% url 'auth:register' %}" class="menu-link">Зарегистрироваться</a>
             {% endif %}
+            {% if basket %}
+            <a href="{% url 'basket:view' %}" class="menu-link">
+                Позиций в корзине: {{ basket|length }} 
+            </a>
+            {% endif %}
         </li>
     </ul>
-    <a href="#" class="search"></a>
-    <a href="{% url 'basket:view' %}" class="basket">
-        <span>
-            {% if basket %} {{ basket|length }} {% endif %}
-        </span>
-    </a>
 </div>
