@@ -49,7 +49,7 @@ def main(request):
     content = {
             'title': title,
             'links_menu': main_links_menu,
-            'basket': basket
+            'basket': basket            
         }
     return render(request, 'mainapp/index.html', content)
 
@@ -60,7 +60,8 @@ def products(request, pk=None):
     basket = []
     if request.user.is_authenticated:
         basket = request.user.basket.all()
-
+    hot_product = get_hot_product()
+    same_products = get_same_products(hot_product)
     if pk is not None:
         if pk == 0:
             products = Product.objects.all().order_by('price')
@@ -74,16 +75,19 @@ def products(request, pk=None):
             'category': category,
             'products': products,
             'categories': categories,
-            'basket': basket
+            'basket': basket,
+            'same_products': same_products,
+            'hot_product': hot_product,
         }
         return render(request, 'mainapp/products.html', content)
-    same_products = Product.objects.all()[3:5]
     content = {
         'title': title, 
         'links_menu': main_links_menu, 
         'same_products': same_products,
         'categories': categories,
-        'basket': basket
+        'basket': basket,
+        'same_products': same_products,
+        'hot_product': hot_product,
     }
     print(categories)
     return render(request, 'mainapp/catalog.html', content)
