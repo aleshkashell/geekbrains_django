@@ -9,6 +9,7 @@ main_links_menu = [
         {'href': 'contact', 'name': 'Контакты'}
     ]
 
+
 def get_basket_sum(request):
     basket = request.user.basket.all()
     total = 0
@@ -17,22 +18,17 @@ def get_basket_sum(request):
         total = total + position.price * product.quantity
     return total
 
+
 def basket(request):
-    basket = Basket.objects.filter(user=request.user)
-    products = []
-    total = get_basket_sum(request)
-    for product in basket:
-        position = get_object_or_404(Product, pk=product.pk)
-        products.append({
-            'basket': product,
-            'product': position
-        })
+    title = 'Корзина'
+    basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
     content = {
-        'basket': products,
+        'title': title,
+        'basket_items': basket_items,
         'links_menu': main_links_menu,
-        'total': total
     }
     return render(request, 'basketapp/basket.html', content)
+
 
 
 def basket_add(request, pk):
@@ -49,5 +45,6 @@ def basket_add(request, pk):
 
 
 def basket_remove(request, pk):
-    content = {}
-    return render(request, 'basketapp/basket.html', content)
+    basket_record = get_object_or_404(Basket, pk=pk)
+    basket_record.delete()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

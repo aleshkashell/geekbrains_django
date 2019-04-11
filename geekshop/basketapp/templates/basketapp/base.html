@@ -10,6 +10,7 @@
     </title>
     {% block css %}
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     {% endblock %}
 
     {% block js %}
@@ -20,14 +21,19 @@
         {% block menu %}
         {% include 'mainapp/includes/inc_menu.html' %}
         {% endblock %}
-        {% block content %}
-        {% endblock %}
-
-        {% block footer %}
-        <div class="footer">
-            <footer class="footer-copyright">&copy; Все права защищены</footer>
+        <div class="basket_container">        
+            <div class="h2 text-center head">
+            Ваша корзина, 
+            {% if user.first_name %}
+                {{ user.first_name|title}}
+            {% else %}
+                Пользователь
+            {% endif %}
+            </div>
+                    
+            {% block content %}
+            {% endblock %}
         </div>
-        {% endblock %}
     </div>
 </body>
 </html>
