@@ -46,12 +46,10 @@ def main(request):
     basket = []
     if request.user.is_authenticated:
         basket = request.user.basket.all()
-    total = get_basket_sum(request)
     content = {
             'title': title,
             'links_menu': main_links_menu,
-            'basket': basket,
-            'total': total
+            'basket': basket
         }
     return render(request, 'mainapp/index.html', content)
 
@@ -60,7 +58,6 @@ def products(request, pk=None):
     title = 'Категории'
     categories = ProductCategory.objects.all()
     basket = []
-    total = get_basket_sum(request)
     if request.user.is_authenticated:
         basket = request.user.basket.all()
 
@@ -77,8 +74,7 @@ def products(request, pk=None):
             'category': category,
             'products': products,
             'categories': categories,
-            'basket': basket,
-            'total': total
+            'basket': basket
         }
         return render(request, 'mainapp/products.html', content)
     same_products = Product.objects.all()[3:5]
@@ -87,8 +83,7 @@ def products(request, pk=None):
         'links_menu': main_links_menu, 
         'same_products': same_products,
         'categories': categories,
-        'basket': basket,
-        'total': total
+        'basket': basket
     }
     print(categories)
     return render(request, 'mainapp/catalog.html', content)
@@ -99,12 +94,10 @@ def contact(request):
     basket = []
     if request.user.is_authenticated:
         basket = request.user.basket.all()
-    total = get_basket_sum(request)
     content = {
             'title': title,
             'links_menu': main_links_menu,
-            'basket': basket,
-            'total': total
+            'basket': basket
         }
     return render(request, 'mainapp/contacts.html', content)
 
