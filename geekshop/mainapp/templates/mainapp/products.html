@@ -12,7 +12,7 @@
     <div class="category-products clearfix">
         {% for product in products %}
             <div class="product-block">
-            <a href="{% url 'basket:add' product.pk %}">
+            <a href="{% url 'products:product' product.pk %}">
                 <img src="/media/{{ product.image }}" alt="{{ product.short_desc }}", width="100">
                 <div class="text">
                 {% comment %} <img src="{% static 'img/icon-hover.png' %}" alt="hover"> {% endcomment %}
