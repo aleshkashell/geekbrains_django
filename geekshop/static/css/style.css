@@ -51,6 +51,17 @@ body{
     padding-left: 5px;
     text-transform: capitalize;
 }
+.input-form-basket{
+    width: 50px;
+    height: 25px;
+    font-size: 16px;
+    color: black;
+    font-weight: 400;
+    border-radius: 7px;
+    padding: 2px;
+    padding-left: 5px;
+    text-transform: capitalize;
+}
 .input-email:focus{
     color: #ffffff;
     background: #0a750093;
@@ -119,6 +130,7 @@ body{
 }
 .main-menu{
     display: flex;
+    margin-top: 10px;
 }
 .product-description{
     display: flex;
@@ -155,6 +167,12 @@ body{
     display: inline-block;
     text-align: center;
     margin: 25px;
+}
+.product-block{
+    text-align: center;
+    vertical-align: top;
+    width: 300px;
+    display: inline-block;
 }
 .caption{
     display: block;
