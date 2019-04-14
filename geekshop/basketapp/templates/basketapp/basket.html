@@ -1,0 +1,16 @@
+{% extends 'basketapp/base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<div class="catalog">
+    {% for product in basket %}
+        {{ product.basket.product }} {{ product.basket.quantity }} X {{ product.product.price }} = {% widthratio product.basket.quantity 1 product.product.price %} руб.
+        </br>
+    {% endfor %}
+</div>
+{% endblock %}
