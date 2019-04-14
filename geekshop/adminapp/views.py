@@ -5,6 +5,12 @@ from authapp.models import ShopUser
 from django.shortcuts import get_object_or_404, render
 from mainapp.models import Product, ProductCategory
 from django.contrib.auth.decorators import user_passes_test
+from django.views.generic.list import ListView
+
+
+class ProductCategoryListView(ListView):
+    model = ProductCategory
+    template_name = 'adminapp/categories.html'
 
 
 @user_passes_test(lambda u: u.is_superuser)
