@@ -23,12 +23,12 @@
       {% endif %}
     </a>
   </li>
-{% comment %}   <li>
-    <a href"{% url 'admin_custom:products' %}"
+  <li>
+    <a href="{% url 'admin_custom:products' 0 %}"
       class="{% if request.resolver_match.url_name == 'products' %}
                 active
               {% endif %}">
       Товары
     </a>
-  </li> {% endcomment %}
+  </li>
 </ul>
