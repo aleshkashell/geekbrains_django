@@ -53,13 +53,17 @@ class ProductCategoryDeleteView(DeleteView):
 class ProductView(ListView):
     model = Product
     template_name = 'adminapp/products.html'
-    
+    #queryset = Product.objects.filter(category__pk=kwargs['pk'])
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Продукты'
         category = get_object_or_404(ProductCategory, pk=self.kwargs['pk'])
         context['category'] = category
         return context
+    
+    def get_queryset(self):
+        return Product.objects.filter(category__pk=self.kwargs['pk'])
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):

@@ -4,7 +4,7 @@
 {% block content %}
   <div class="products_list">
     <button class="new_product">
-      <a href={% url 'admin_custom:product_create' 1 %}>
+      <a href={% url 'admin_custom:product_create' category.pk %}>
         новый продукт
       </a>
     </button>
