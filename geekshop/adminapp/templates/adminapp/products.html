@@ -4,16 +4,17 @@
 {% block content %}
   <div class="products_list">
     <button class="new_product">
-      <a href={% url 'admin_custom:product_create' category.pk %}>
+      <a href={% url 'admin_custom:product_create' 1 %}>
         новый продукт
       </a>
     </button>
-        
-    {% for object in objects %}
+        {{ category.name }}
+    {% for object in object_list %}
       <div class="product_record">
         <img 
           src="/media/{{object.image|default:'products_images/default.jpg'}}"
-          alt="{{ object.name }}">
+          alt="{{ object.name }}"
+          width="100 px">
         <div class="product_name">
           {{ object.name|title }}
         </div>
@@ -43,6 +44,7 @@
         <div class="product_desc">
           {{ object.short_desc|title }}
         </div>
+        <br>
       </div>
     {% endfor%}
   </div>
