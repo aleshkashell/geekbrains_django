@@ -19,6 +19,12 @@ class ProductCategoryListView(ListView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Категории'
+        return context
+
+
 
 class ProductCategoryCreateView(CreateView):
     model = ProductCategory
@@ -28,6 +34,13 @@ class ProductCategoryCreateView(CreateView):
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Категории'
+        context['title_submenu'] = 'Создание категории'
+        return context
+
 
 
 class ProductCategoryUpdateView(UpdateView):
@@ -39,6 +52,12 @@ class ProductCategoryUpdateView(UpdateView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Категории'
+        context['title_submenu'] = 'Изменение категории'
+        return context
+
 
 class ProductCategoryDeleteView(DeleteView):
     model = ProductCategory
@@ -47,6 +66,12 @@ class ProductCategoryDeleteView(DeleteView):
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Категории'
+        context['title_submenu'] = 'Удаление категории'
+        return context
 
 
 class ProductView(ListView):
@@ -95,6 +120,7 @@ class ProductCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Продукты'
+        context['title_submenu'] = 'Создание товара'
         category = get_object_or_404(ProductCategory, pk=self.kwargs['pk'])
         context['category'] = category
         return context
@@ -118,6 +144,7 @@ class ProductUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Продукты'
+        context['title_submenu'] = 'Редактирование товара'
         category = {'pk': 0}
         context['category'] = category
         return context
@@ -136,6 +163,7 @@ class ProductDeleteView(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Продукты'
+        context['title_submenu'] = 'Удаление товара'
         category = {'pk': 0}
         context['category'] = category
         return context
@@ -149,6 +177,11 @@ class UserListView(ListView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Пользователи'
+        return context
+
 
 class UserCreateView(CreateView):
     model = ShopUser
@@ -158,6 +191,12 @@ class UserCreateView(CreateView):
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Пользователи'
+        context['title_submenu'] = 'Создание пользователя'
+        return context
 
 
 class UserUpdateView(UpdateView):
@@ -169,6 +208,11 @@ class UserUpdateView(UpdateView):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Пользователи'
+        context['title_submenu'] = 'Обновление пользователя'
+        return context
 
 class UserDeleteView(DeleteView):
     model = ShopUser
@@ -177,3 +221,9 @@ class UserDeleteView(DeleteView):
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Пользователи'
+        context['title_submenu'] = 'Удаление пользователя'
+        return context

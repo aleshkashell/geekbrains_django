@@ -19,11 +19,11 @@
           {{ object.name|title }}
         </div>
         <div class="product_actions">
-          <button>
+          {% comment %} <button>
             <a href={% url 'admin_custom:product_read' object.pk %}>
               подробнее
             </a>
-          </button>
+          </button> {% endcomment %}
           <button>
             <a href={% url 'admin_custom:product_update' object.pk %}>
               редактировать
