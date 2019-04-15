@@ -49,7 +49,6 @@ class ProductCategoryDeleteView(DeleteView):
         return super().dispatch(request, *args, **kwargs)
 
 
-
 class ProductView(ListView):
     model = Product
     template_name = 'adminapp/products.html'
