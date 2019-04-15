@@ -61,8 +61,10 @@ class ProductView(ListView):
         category = get_object_or_404(ProductCategory, pk=self.kwargs['pk'])
         context['category'] = category
         return context
-    
+
     def get_queryset(self):
+        if self.kwargs['pk'] == 0:
+            return Product.object.all()
         return Product.objects.filter(category__pk=self.kwargs['pk'])
 
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
@@ -83,10 +85,20 @@ class ProductCreateView(CreateView):
     model = Product
     template_name = 'adminapp/product_update.html'
     fields = '__all__'
-    success_url = reverse_lazy('adminapp:products')
+    #success_url = reverse_lazy('adminapp:products')
     @method_decorator(user_passes_test(lambda u: u.is_superuser))
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Продукты'
+        category = get_object_or_404(ProductCategory, pk=self.kwargs['pk'])
+        context['category'] = category
+        return context
+    
+    def get_success_url(self):
+        return reverse_lazy('adminapp:products',  kwargs={'pk': self.kwargs['pk']})
 
 
 class ProductUpdateView(UpdateView):
