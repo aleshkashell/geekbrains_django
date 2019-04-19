@@ -31,7 +31,7 @@
             {% if basket %}
             <a href="{% url 'basket:view' %}" class="menu-link">
                 {{ request.user|basket_total_cost }} руб 
-                ({{ basket.0.total_quantity }} шт)
+                ({{ request.user|total_quantity }} шт)
             </a>
             {% endif %}
         </li>
