@@ -1,0 +1,34 @@
+<ul class="menu">
+  <li>
+    <a href="{% url 'main' %}">
+      на сайт
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'admin_custom:users' %}" 
+       class="{% if request.resolver_match.url_name == 'users' %}
+                active
+              {% endif %}">
+      пользователи
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'admin_custom:categories' %}" 
+       class="{% if request.resolver_match.url_name == 'categories' or category.name %}
+                active
+              {% endif %}">
+      категории
+      {% if category %}
+        :<span>{{ category.name }}</span>
+      {% endif %}
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'admin_custom:products' 0 %}"
+      class="{% if request.resolver_match.url_name == 'products' %}
+                active
+              {% endif %}">
+      Товары
+    </a>
+  </li>
+</ul>
