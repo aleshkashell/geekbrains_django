@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load custom_tags %}
 <div class="header">
     <a href="{% url 'main' %}"><img src="{% static 'img/logotip.png' %}" alt="logo" class="logotip"></a>
     <ul class="main-menu">
@@ -29,8 +30,8 @@
             {% endif %}
             {% if basket %}
             <a href="{% url 'basket:view' %}" class="menu-link">
-                {{ basket.0.total_cost|floatformat:0 }} руб 
-                ({{ basket.0.total_quantity }} шт)
+                {{ request.user|basket_total_cost }} руб 
+                ({{ request.user|total_quantity }} шт)
             </a>
             {% endif %}
         </li>
