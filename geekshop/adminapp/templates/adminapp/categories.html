@@ -8,9 +8,29 @@
         новая категория
       </a>
     </button>
-        
+    <div class="row mt-5"> 
     {% for object in object_list %}
-      <div class="category_record">
+
+      <div class="card mx-2 mb-3" style="max-width: 540px">
+        <div class="row no-gutters">
+          <div class="col-md-4 ">
+            <img src="/media/{{object.image|default:'products_images/default.jpg'}}" class="card-img" alt="{{ object.name }}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ object.name|title }}</h5>
+              <p class="card-text">{{ object.description|title }}</p>
+              {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+              <a class="btn btn-primary" href="{% url 'admin_custom:products' object.pk %}" role="button">Товары категории</a>
+              <a class="btn btn-primary" href="{% url 'admin_custom:category_update' object.pk %}" role="button">Редактировать</a>
+              <a class="btn btn-primary" href="{% url 'admin_custom:category_delete' object.pk %}" role="button">Удалить</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      {% comment %} <div class="category_record">
         <div class="category_name">
           {{ object.name|title }}
         </div>
@@ -34,7 +54,8 @@
         <div class="category_desc">
           {{ object.description|title }}
         </div>
-      </div>
+      </div> {% endcomment %}
     {% endfor%}
+    </div>
   </div>
 {% endblock %}

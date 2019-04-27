@@ -22,7 +22,7 @@
             <div class="card-body">
               <h5 class="card-title">{{ object.name|title }}</h5>
               <p class="card-text">{{ object.short_desc|title }}</p>
-              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+              {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
               <a class="btn btn-primary" href="{% url 'admin_custom:product_update' object.pk %}" role="button">Редактировать</a>
               <a class="btn btn-primary" href="{% url 'admin_custom:product_delete' object.pk %}" role="button">Удалить</a>
             </div>
