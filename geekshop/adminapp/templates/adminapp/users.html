@@ -11,7 +11,7 @@
     <div class="row mt-5">
       {% for object in object_list %}
 
-        <div class="card mx-2 mb-3" style="width: 700px;">
+        <div class="card mx-2 mb-3 {% if not object.is_active %} bg-light text-muted {% endif %}" style="width: 700px;">
           <div class="row no-gutters">
             <div class="col-md-4 ">
               <img src="/media/{{ object.avatar|default:'users_avatars/default.png' }}" class="card-img" alt="{{ object.name }}">

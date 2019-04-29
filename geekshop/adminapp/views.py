@@ -2,7 +2,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from authapp.models import ShopUser
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 from django.urls import reverse_lazy
 from mainapp.models import Product, ProductCategory
 from django.contrib.auth.decorators import user_passes_test
@@ -227,3 +227,9 @@ class UserDeleteView(DeleteView):
         context['title'] = 'Пользователи'
         context['title_submenu'] = 'Удаление пользователя'
         return context
+
+    def delete(self, request, *args, **kwargs):
+        user = get_object_or_404(ShopUser, pk=kwargs['pk'])
+        user.is_active = False
+        user.save()
+        return HttpResponseRedirect(self.success_url)    
