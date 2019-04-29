@@ -121,8 +121,8 @@ class ProductCreateView(CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Продукты'
         context['title_submenu'] = 'Создание товара'
-        category = get_object_or_404(ProductCategory, pk=self.kwargs['pk'])
-        context['category'] = category
+        #category = get_object_or_404(ProductCategory, pk=self.kwargs['pk'])
+        context['pk'] = self.kwargs['pk']
         return context
     
     def get_success_url(self):
