@@ -9,8 +9,28 @@
       </a>
     </button>
         {{ category.name }}
+    
+    <div class="row mt-5">
     {% for object in object_list %}
-      <div class="product_record">
+    
+      <div class="card mx-2 mb-3" style="max-width: 540px">
+        <div class="row no-gutters">
+          <div class="col-md-4 ">
+            <img src="/media/{{object.image|default:'products_images/default.jpg'}}" class="card-img" alt="{{ object.name }}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ object.name|title }}</h5>
+              <p class="card-text">{{ object.short_desc|title }}</p>
+              {% comment %} <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> {% endcomment %}
+              <a class="btn btn-primary" href="{% url 'admin_custom:product_update' object.pk %}" role="button">Редактировать</a>
+              <a class="btn btn-primary" href="{% url 'admin_custom:product_delete' object.pk %}" role="button">Удалить</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% comment %} <div class="product_record">
         <img 
           src="/media/{{object.image|default:'products_images/default.jpg'}}"
           alt="{{ object.name }}"
@@ -19,11 +39,6 @@
           {{ object.name|title }}
         </div>
         <div class="product_actions">
-          {% comment %} <button>
-            <a href={% url 'admin_custom:product_read' object.pk %}>
-              подробнее
-            </a>
-          </button> {% endcomment %}
           <button>
             <a href={% url 'admin_custom:product_update' object.pk %}>
               редактировать
@@ -45,7 +60,8 @@
           {{ object.short_desc|title }}
         </div>
         <br>
-      </div>
+      </div> {% endcomment %}
     {% endfor%}
+    </div>
   </div>
 {% endblock %}
